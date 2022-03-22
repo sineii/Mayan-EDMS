@@ -24,6 +24,12 @@ class Theme(ExtraDataModelMixin, models.Model):
             'user interface elements.'
         ), verbose_name=_('Stylesheet')
     )
+    
+    logo = models.TextField(
+        blank=True, help_text=_(
+            'logo here'
+        ), verbose_name=_('Logo')
+    )
 
     class Meta:
         ordering = ('label',)

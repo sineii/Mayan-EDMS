@@ -11,8 +11,15 @@
         url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
 }
 
+/* จัด navbar */
 .navbar-brand {
     font-family: "IM Fell English SC", serif;
+}
+.navbar .navbar-brand {
+    padding: 2px 7.5px;
+}
+  .navbar .navbar-brand img {
+    display: inline-block;
 }
 
 #appearance-main-viewport {

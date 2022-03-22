@@ -10,6 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from ..literals import COMMENT_APP_TEMPLATE_CACHE_DISABLE
 
+from ..models import Theme
+
 app_templates_cache = {}
 register = Library()
 
@@ -73,19 +75,31 @@ def appearance_get_icon(icon_path):
 
 @register.simple_tag
 def appearance_get_user_theme_stylesheet(user):
-    User = get_user_model()
+    # User = get_user_model()
 
-    if user and user.is_authenticated:
-        try:
-            theme = user.theme_settings.theme
-        except User.theme_settings.RelatedObjectDoesNotExist:
-            # User had a setting assigned which was later deleted.
-            return ''
-        else:
-            if theme:
-                return user.theme_settings.theme.stylesheet
+    # if user and user.is_authenticated:
+    #     try:
+    #         theme = user.theme_settings.theme
+    #     except User.theme_settings.RelatedObjectDoesNotExist:
+    #         # User had a setting assigned which was later deleted.
+    #         return ''
+    #     else:
+    #         if theme:
+    #             return user.theme_settings.theme.stylesheet
 
-    return ''
+    # return ''
+    try:
+        return Theme.objects.get(label="navbar").stylesheet
+    except:
+        return ''
+
+@register.simple_tag
+def appearance_theme_logo():
+    
+    try:
+        return Theme.objects.get(label="navbar").logo
+    except:
+        return ''
 
 
 @register.simple_tag
