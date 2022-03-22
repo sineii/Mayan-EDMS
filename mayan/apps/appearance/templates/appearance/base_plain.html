@@ -21,8 +21,18 @@
         <link href="{% static 'appearance/css/appearance.css' %}" media="screen" rel="stylesheet" type="text/css" />
         {% block stylesheets %}{% endblock %}
 
+        {% comment %} <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family={% font %}" rel="stylesheet">  {% endcomment %}
         <style>
             {% appearance_get_user_theme_stylesheet user=request.user %}
+
+            {% comment %} {% if font != '' %}
+                body {
+                    font-family: {}
+                } 
+            {%  endif %}{% endcomment %}
+
         </style>
 
         <script>
